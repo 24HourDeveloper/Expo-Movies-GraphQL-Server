@@ -21,6 +21,7 @@ const schema = buildSchema(`
     movies(page: Int, category: String): [Movie]
     movie(id: String): Movie
     trailers(id: String): [Trailer]
+    search(query: String): [Movie]
   }
 `)
 
@@ -37,6 +38,13 @@ const resolver = {
   },
   async trailers({ id }: { id: string }) {
     const res = await fetch(`${baseURL}/${id}/videos?api_key=${apiKey}&language=en-US`)
+    const data = await res.json()
+    return data.results
+  },
+  async search({ query }: { query: string }) {
+    console.log('QUERY: ', query)
+    const searchURL = "https://api.themoviedb.org/3/search/movie"
+    const res = await fetch(`${searchURL}?api_key=${apiKey}&language=en-US&query=${query}&page=1&include_adult=false`)
     const data = await res.json()
     return data.results
   }
