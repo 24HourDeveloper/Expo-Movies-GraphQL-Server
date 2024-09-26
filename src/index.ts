@@ -51,7 +51,7 @@ const resolver = {
 }
 
 const app: Express = express()
-const port = 4000
+const port = 3000
 app.use(cors())
 
 app.all('/graphql', createHandler({
