@@ -2,11 +2,11 @@
   "name": "express-movie-graphql",
   "version": "1.0.0",
   "main": "dist/index.js",
-  "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/index.js",
-    "dev": "set DEBUG=express:* & nodemon src/index.ts"
+    "start": "node src/index.ts",
+    "dev": "nodemon src/index.ts",
+    "vercel-build": "echo hello"
   },
   "keywords": [],
   "author": "",

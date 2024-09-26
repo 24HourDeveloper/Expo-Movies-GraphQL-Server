@@ -51,14 +51,14 @@ const resolver = {
 }
 
 const app: Express = express()
-const port = 3000
+const port = 4000
 app.use(cors())
 
+app.get('/', (req, res) => res.send(`Hello Vercel! Base url is ${baseURL}`))
 app.all('/graphql', createHandler({
   schema,
   rootValue: resolver
 }))
-
 app.get('/playground', playground({ endpoint: '/graphql'}))
 
 app.listen(port, () => console.log(`Server is running on port ${port}`))
