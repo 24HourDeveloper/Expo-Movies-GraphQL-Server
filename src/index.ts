@@ -62,3 +62,5 @@ app.all('/graphql', createHandler({
 app.get('/playground', playground({ endpoint: '/graphql'}))
 
 app.listen(port, () => console.log(`Server is running on port ${port}`))
+
+export default app
